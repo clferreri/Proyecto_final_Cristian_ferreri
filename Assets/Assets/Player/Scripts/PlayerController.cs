@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     private float actualSpeed;
     //private float x;
-    public bool move = false;
+    public bool move = true;
 
     [SerializeField]
     private GameObject player;
@@ -70,8 +70,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         this.playerColider = this.player.GetComponent<CapsuleCollider>();
-        GameManager.instance.StartLevel();
         this.actualSpeed = this.runSpeed;
+        GameManager.instance.StartLevel();
+        this.setMovePlayer(true);
     }
 
     // Update is called once per frame
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
             this.JumpLogic();
             this.SlideLogic();
         }
+
     }
 
     private void DashLogic()

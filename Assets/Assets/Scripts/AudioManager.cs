@@ -12,6 +12,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource sonido, sonidoPlayer;
 
+    [SerializeField]
+    private List<AudioClip> musicas;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -27,7 +30,20 @@ public class AudioManager : MonoBehaviour
 
     public void ReproducirMusica(AudioClip clip)
     {
-        this.musica.PlayOneShot(clip);
+        this.musica.clip = clip;
+        this.musica.Play();
+    }
+
+    public void EjecutarPistaMusical(int indice)
+    {
+        Debug.Log(indice);
+        if (!this.musicas[indice])
+        {
+            this.musica.Stop();
+            return;
+        }
+        this.musica.clip = this.musicas[indice];
+        this.musica.Play();
     }
 
 

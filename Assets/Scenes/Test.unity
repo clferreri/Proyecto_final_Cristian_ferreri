@@ -10344,6 +10344,14 @@ MonoBehaviour:
   gameStart: 0
   playerAnimator: {fileID: 9102463254488044337}
   playerScript: {fileID: 365853371}
+  startTimeLevel: 90
+  startLives: 3
+  startContinues: 2
+  contador: {fileID: 0}
+  contadorBaterias: {fileID: 0}
+  hitClip: {fileID: 0}
+  deathClip: {fileID: 0}
+  takeBateryClip: {fileID: 0}
 --- !u!1001 &925489437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11174,7 +11182,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 915830484}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartLevel
+        m_MethodName: cambiarEscena
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13051,8 +13059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musica: {fileID: 0}
   sonido: {fileID: 0}
-  sonidos2: {fileID: 0}
   sonidoPlayer: {fileID: 17729009}
+  musicas: []
 --- !u!4 &1173492510
 Transform:
   m_ObjectHideFlags: 0
