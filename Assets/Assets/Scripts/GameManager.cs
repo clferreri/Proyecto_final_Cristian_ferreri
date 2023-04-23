@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Scene = UnityEngine.SceneManagement.Scene;
 
 public class GameManager : MonoBehaviour
@@ -20,8 +22,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float startTimeLevel = 90;
-    [SerializeField]
     private int startLives = 3;
+
     [SerializeField]
     private int startContinues = 2;
 
@@ -37,6 +39,9 @@ public class GameManager : MonoBehaviour
     private int batery = 0;
     private TextMeshProUGUI contadorText;
     private TextMeshProUGUI contadorBateriasText;
+
+    public List<GameObject> imagenesVidas;
+
 
     private Scene actualScene;
 
@@ -154,6 +159,16 @@ public class GameManager : MonoBehaviour
         this.EjecutarAnimacion("Running");
         AudioManager.instance.SetActiveSoundPlayer(true);
         this.GetPlayerScript();
+        this.CargarVidas();
+
+    }
+
+    private void CargarVidas()
+    {
+        foreach (GameObject vida in this.imagenesVidas)
+        {
+            vida.SetActive(true);
+        }
     }
 
     public void RestartLevel()
@@ -189,8 +204,8 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.ReproducirSonido(this.hitClip);
         this.EjecutarAnimacion("Hit");
+        this.imagenesVidas[this.lives - 1].SetActive(false);
         this.lives -= 1;
-
         if (this.lives <= 0)
         {
             StartCoroutine("Morir");

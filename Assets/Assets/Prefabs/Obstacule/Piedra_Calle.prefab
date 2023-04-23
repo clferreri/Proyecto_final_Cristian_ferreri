@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1066426889956692, guid: b371324d60f1ca9408481c0bd5f4539d, type: 3}
       propertyPath: m_Name
-      value: StoneStreet prefab
+      value: Piedra_Calle
       objectReference: {fileID: 0}
     - target: {fileID: 4214142964039086, guid: b371324d60f1ca9408481c0bd5f4539d, type: 3}
       propertyPath: m_RootOrder
@@ -58,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 4214142964039086, guid: b371324d60f1ca9408481c0bd5f4539d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64660680248632714, guid: b371324d60f1ca9408481c0bd5f4539d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b371324d60f1ca9408481c0bd5f4539d, type: 3}

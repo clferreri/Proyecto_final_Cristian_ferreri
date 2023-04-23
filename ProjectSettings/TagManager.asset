@@ -7,6 +7,7 @@ TagManager:
   - ground
   - PlayerObject
   - PlayerModel
+  - LifesPlayer
   layers:
   - Default
   - TransparentFX
