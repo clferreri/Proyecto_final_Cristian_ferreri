@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioClip hitClip, deathClip, takeBateryClip;
 
+    [SerializeField]
+    private Canvas canvas;
+
+    [SerializeField]
+    private GameObject PanelGameOver;
+
     private float timeLevel = 90;
     private int lives = 3;
     private int continues = 2;
@@ -152,7 +158,9 @@ public class GameManager : MonoBehaviour
 
     public void StartLevel()
     {
+        this.PanelGameOver.SetActive(false);
         this.WakeUpGame();
+        this.canvas.gameObject.SetActive(true);
         this.timeLevel = this.startTimeLevel;
         this.lives = this.startLives;
         this.gameStart = true;
@@ -173,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Nivel");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
@@ -228,8 +236,18 @@ public class GameManager : MonoBehaviour
 
     private void Contador()
     {
-        this.timeLevel -= Time.deltaTime;
-        this.GetContadorText().text = Math.Round(this.timeLevel).ToString();
+        if(this.lives > 0)
+        {
+            this.timeLevel -= Time.deltaTime;
+            this.GetContadorText().text = Math.Round(this.timeLevel).ToString();
+        }
+    }
+
+
+    public void VolverAlMenu()
+    {
+        AudioManager.instance.EjecutarPistaMusical(0);
+        SceneManager.LoadScene(0);
     }
 
 
@@ -241,7 +259,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         AudioManager.instance.ReproducirSonido(deathClip);
         AudioManager.instance.SetActiveSoundPlayer(false);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.5f);
+        this.PanelGameOver.SetActive(true);
         //mostrar menu de reiniciar
     }
 
